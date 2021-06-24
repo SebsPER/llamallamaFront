@@ -8,7 +8,9 @@ import { Producto } from 'src/app/models/producto.model';
 })
 export class ProductsService {
 
-  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
+  //private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
+  private API = 'http://localhost:8080/llamallama/v1/'
+
 
   constructor(private http: HttpClient) { }
 

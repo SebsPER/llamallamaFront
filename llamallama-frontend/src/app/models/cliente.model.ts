@@ -7,5 +7,4 @@ export class Cliente{
     apellido_paterno: string;
     apellido_matenro: string;
     password: string;
-    compra: any[];
 }

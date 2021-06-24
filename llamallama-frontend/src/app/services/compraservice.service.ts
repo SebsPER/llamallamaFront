@@ -7,7 +7,8 @@ import { Compra_producto } from '../models/compra_producto.model';
 })
 export class CompraserviceService {
 
-  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
+  //private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
+  private API = 'http://localhost:8080/llamallama/v1/'
 
   constructor(private http:HttpClient) { }
 
@@ -24,8 +25,13 @@ export class CompraserviceService {
     return this.http.get(this.API+'producto'+'/'+id)
   }
 
+  getTiendabyId(id: number){
+    return this.http.get(this.API+'tienda'+'/'+id)
+  }
+
   getCompraProducto(){
     return this.http.get(this.API+'compra_productos')
   }
+
 
 }

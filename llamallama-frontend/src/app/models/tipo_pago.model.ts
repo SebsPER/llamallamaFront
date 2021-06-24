@@ -1,5 +1,5 @@
 export class Tipo_pago{
-    codigo: number;
+    id: number;
     nombre: string;
     descripcion: string;
     descuento: number;

@@ -8,11 +8,13 @@ import { ProductosComponent } from './productos/productos.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { CrudProductosComponent } from './crud-productos/crud-productos.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    BusquedaComponent
 
   ],
   imports:[

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { CompracComponent } from './components/comprac/comprac.component';
+import { CompraorderComponent } from './components/compraorder/compraorder.component';
 import { CrudProductosComponent } from './components/crud-productos/crud-productos.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavegaciontiendaComponent } from './components/navegaciontienda/navegaciontienda.component';
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: 'tiendas', component: NavegaciontiendaComponent},
   {path: 'compra/:id', component:CompracComponent},
   {path: 'crud-productos', component: CrudProductosComponent},
-  {path: 'productos', component: ProductosComponent}
+  {path: 'productos', component: ProductosComponent},
+  {path: 'compras',component:CompraorderComponent},
+  {path: 'searching/:id', component: BusquedaComponent}
 ];
 
 @NgModule({

@@ -1,1 +1,45 @@
-<p>compraorder works!</p>
+<div class="Register">
+    <form class="Compraform" [formGroup]="CompraForm" (ngSubmit)="registrarCompra()">
+        <h1>Registra Datos de Compra</h1>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label> ID del envio </mat-label>
+                <input formControlName="id" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Direccion del envio </mat-label>
+                <input formControlName="direccion" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Fecha del envio </mat-label>
+                <input formControlName="fecha" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Ciudad del envio </mat-label>
+                <input formControlName="ciudad_envio" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Distrito del envio </mat-label>
+                <input formControlName="distrito_envio" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Monto total</mat-label>
+                <input formControlName="monto_total" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Tipo de pago </mat-label>
+                <input formControlName="tipopagoid" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label> Cliente </mat-label>
+                <input formControlName="clienteid" matInput>
+            </mat-form-field>
+        </div>
+    </form>
+    <div class = "text-right">
+        <button (click)='registrarCompra()' type="submit" mat-button color="primary" 
+        [disabled]="!CompraForm.valid">Registrar Compra</button>
+
+    </div>
+
+</div>

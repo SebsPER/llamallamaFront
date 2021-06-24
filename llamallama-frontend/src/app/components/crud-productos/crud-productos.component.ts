@@ -21,7 +21,9 @@ export class CrudProductosComponent implements OnInit {
   tienda_productos: Tienda_producto[];
   productos: Producto[];
 
-  constructor(private fb: FormBuilder, public tiendaProductoService: CrudProductsService, public productService: ProductsService) { }
+  constructor(private fb: FormBuilder, 
+    public tiendaProductoService: CrudProductsService, 
+    public productService: ProductsService) { }
 
   ngOnInit(): void {
     this.initForm();
