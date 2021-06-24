@@ -1,17 +1,19 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4" *ngFor="let producto of productos">
+        <div class="col-md-4" *ngFor="let tp of tps">
             <mat-card class="card-theme">
                 <mat-card-header>
                 </mat-card-header>
                 <mat-card-content>
-                    <mat-card-title>{{producto.nombre}}</mat-card-title>
-                    <mat-card-subtitle>Categoria: {{producto.categoriaid}}</mat-card-subtitle>
+                    <mat-card-title>{{tp.prodN}}</mat-card-title>
+                    <mat-card-subtitle>Tienda: {{tp.tname}}</mat-card-subtitle>
+                    <mat-card-subtitle>Categoria: {{tp.catN}}</mat-card-subtitle>
+                    <mat-card-subtitle>Precio: S/. {{tp.precio}} </mat-card-subtitle>
                 </mat-card-content>
             </mat-card>
             <mat-card-actions>
                 <button >Agregar al carrito</button>
-                <button mat-button [routerLink]="['/compra', producto.id]">Comprar</button> 
+                <button mat-button [routerLink]="['/compra', tp.productoid]">Comprar</button> 
             </mat-card-actions>
         </div>
     </div>

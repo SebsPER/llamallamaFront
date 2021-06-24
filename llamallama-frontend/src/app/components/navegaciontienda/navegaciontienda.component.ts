@@ -12,14 +12,19 @@ import { ExplorerService } from 'src/app/services/explorer.service';
 export class NavegaciontiendaComponent implements OnInit {
 
   public productos: Producto[];
+  public tps: Tienda_producto[];
   
 
   constructor(private explorerservice:ExplorerService) { }
 
   ngOnInit(): void {
-    this.explorerservice.getProductos().subscribe((result:any)=>{
+    /*this.explorerservice.getProductos().subscribe((result:any)=>{
       console.log(result.data);
       this.productos = result.data;
+    })*/
+    this.explorerservice.getTps().subscribe((result:any)=>{
+      console.log(result.data);
+      this.tps = result.data;
     })
   }
 }

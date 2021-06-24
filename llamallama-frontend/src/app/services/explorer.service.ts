@@ -22,6 +22,10 @@ export class ExplorerService {
     return this.http.get(this.API+'productn'+'/'+ nombre)
   }
 
+  getTps(){
+    return this.http.get(this.API+'tienda_producto')
+  }
+
 
 }
 
