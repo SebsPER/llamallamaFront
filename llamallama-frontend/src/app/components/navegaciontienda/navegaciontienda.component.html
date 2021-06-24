@@ -1,5 +1,15 @@
 <div class="container">
-    <div class="row">
+    <div class="row" [formGroup]="busquedaForm">
+        <mat-form-field>
+            <mat-label> Busqueda por tienda, producto o categoria... </mat-label>
+            <input formControlName="texto" matInput>
+        </mat-form-field>
+        <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit" (click)="busquedaNomProd()">
+            Busqueda por Nombre de Producto</button>
+        <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit" (click)="busquedaNomTienda()">
+            Busqueda por nombre de Tienda</button>
+        <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit" (click)="busquedaNomCat()">
+            Busqueda por Categoria</button>
         <div class="col-md-4" *ngFor="let tp of tps">
             <mat-card class="card-theme">
                 <mat-card-header>

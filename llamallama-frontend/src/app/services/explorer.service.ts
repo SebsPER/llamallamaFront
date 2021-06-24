@@ -18,14 +18,21 @@ export class ExplorerService {
     return this.http.get(this.API+ 'products')
   }
 
-  getProductosByName(nombre: Producto){
-    return this.http.get(this.API+'productn'+'/'+ nombre)
+  getProductosByNameProd(nombreP: String){
+    return this.http.get(this.API+'tienda_producton'+'/'+ nombreP)
+  }
+
+  getProductosByCat(nombreC: String){
+    return this.http.get(this.API+'tienda_productoc'+'/'+ nombreC)
+  }
+
+  getProductosByNameTienda(nombreT: String){
+    return this.http.get(this.API+'tienda_productons'+'/'+ nombreT)
   }
 
   getTps(){
     return this.http.get(this.API+'tienda_producto')
   }
-
 
 }
 
