@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Cliente } from 'src/app/models/cliente.model';
+import { Tienda } from 'src/app/models/tienda.model';
 
 
 @Component({
@@ -8,29 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  user: string;
-  email: string;
-  password: string;
-  confirmpassword: string;
-  userType: string;
+  public registroUsuarioForm: FormGroup;
+  public comprador = new Cliente();
+  public vendedor = new Tienda();
 
-
-  usertypes: string[] = ['vendedor', 'comprador'];
-
-  rbuttonChange(){
-    console.log(this.userType)
-  }
-
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  register(){
-    console.log(this.user);
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.confirmpassword);
-  }
-
+ 
 }

@@ -1,30 +1,91 @@
-<div class="body">
-    <div class="register">
-        <h1 class="h3 mb-3 fw.normal"> Register </h1>
-        <mat-form-field>
-            <input matInput placeholder="User" [(ngModel)] = "user">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="E-Mail" [(ngModel)] = "email">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Password" [(ngModel)] = "password">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Confirm Password" [(ngModel)] = "confirmpassword">
-        </mat-form-field>
-        <br>
-        <mat-label>
-            Pick your User Type
-        </mat-label>
-        <mat-radio-group aria-label="Select and Option" class="radio-group" [(ngModel)] = "userType">
-            <mat-radio-button class="radio-button" *ngFor= 'let usertype of usertypes' [value] = 'usertype' (change) = 'rbuttonChange()'>
-                {{usertype}}
-            </mat-radio-button>
-        </mat-radio-group>
-        <br>
-        <button (click)='register()' class="ancho" mat-raised-button mat-button color="primary">
-            Registrar
-        </button>
-    </div>
-</div>
+<body>
+    <div class="container">
+        <div class="title">
+            <h4> Registration </h4>
+        </div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <mat-label class="details"> Name </mat-label>
+                    <input formControlName="name" placeholder="Enter your name" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Password </mat-label>
+                    <input formControlName="password" placeholder="Enter your Password" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Confirm Password </mat-label>
+                    <input formControlName="confirmpassword" placeholder="Enter your password again" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> DNI </mat-label>
+                    <input formControlName="dni" placeholder="Enter your DNI" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Address </mat-label>
+                    <input formControlName="direccion" placeholder="Enter your address" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Phone Number </mat-label>
+                    <input formControlName="telefono" placeholder="Enter your phone number" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Apellido Paterno </mat-label>
+                    <input formControlName="apellido_paterno" placeholder="Enter your surname" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Apellido Materno </mat-label>
+                    <input formControlName="apellido_materno" placeholder="Enter your surname" required matInput>
+                </div>
+            </div>
+            <div class="button">
+                <button class="submit" mat-raised-button>
+                    Registrar
+                </button>
+            </div>
+        </form>
+    </div>    
+</body>
+
+
+
+<!--
+    <body>
+    <section class="section-register" >
+        <div class="body">
+            <div class="register">
+                <h1 class="h3 mb-3 fw.normal"> Register </h1>
+                <mat-form-field>
+                    <input matInput placeholder="User" [(ngModel)] = "user">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="E-Mail" [(ngModel)] = "email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Password" [(ngModel)] = "password">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Confirm Password" [(ngModel)] = "confirmpassword">
+                </mat-form-field>
+                <br>
+                <mat-label>
+                    Pick your User Type
+                </mat-label>
+                <mat-radio-group aria-label="Select and Option" class="radio-group" [(ngModel)] = "userType">
+                    <mat-radio-button class="radio-button" *ngFor= 'let usertype of usertypes' [value] = 'usertype' (change) = 'rbuttonChange()'>
+                        {{usertype}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <br>
+                <button (click)='register()' class="ancho" mat-raised-button mat-button color="primary">
+                    Registrar
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+
+-->
+

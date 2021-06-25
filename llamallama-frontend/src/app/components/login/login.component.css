@@ -5,17 +5,9 @@
 
   /*colores para todos los componentes*/
   section {
-    display: block; 
-    background: #d9e2e9;
-    background: -moz-linear-gradient(-45deg, #becddd 0%, #d9e2e9  100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, #becddd), color-stop(100%, #d9e2e9));
-    background: -webkit-linear-gradient(-45deg, #becddd 0%, #d9e2e9 100%);
-    background: -o-linear-gradient(-45deg, #becddd 0%, #d9e2e9 100%);
-    background: -ms-linear-gradient(-45deg, #becddd 0%, #d9e2e9 100%);
-    background: -webkit-linear-gradient(315deg, #becddd 0%, #d9e2e9 100%);
-    background: -o-linear-gradient(315deg, #becddd 0%, #d9e2e9 100%);
+    display: block;
     background: linear-gradient(135deg, #becddd 0%, #d9e2e9 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#becddd', endColorstr='#d9e2e9', GradientType=1 ); 
+
   }
 
   body {
@@ -72,7 +64,8 @@
   }
 
   button, input {
-    overflow: visible; }
+    overflow: visible; 
+  }
 
   select {
     word-wrap: normal; }
@@ -107,9 +100,6 @@
   h6, .h6 {
     font-size: 1rem; }
 
-
-
-    
 
   .container {
     width: 100%;
@@ -477,15 +467,8 @@
 }
 
   .text-wrap {
-    background: #f75959;
-    background: -moz-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, #f75959), color-stop(100%, #f35587));
-    background: -webkit-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -o-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -ms-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -webkit-linear-gradient(315deg, #f75959 0%, #f35587 100%);
-    background: -o-linear-gradient(315deg, #f75959 0%, #f35587 100%);
-    background: linear-gradient(135deg, #f75959 0%, #f35587 100%);
+    background: #9b59b6;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75959', endColorstr='#f35587', GradientType=1 );
     color: #fff; 
   }
@@ -580,7 +563,8 @@
   }
 
   .btn:enabled{
-    background: #f75959;
+    background: #9b59b6;
+    
     background: -moz-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
     background: -webkit-gradient(left top, right bottom, color-stop(0%, #f75959), color-stop(100%, #f35587));
     background: -webkit-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
@@ -595,40 +579,32 @@
   
   .btn:hover, .btn:active, .btn:focus{
     outline: none; 
-    background: #f355a4;
+    background: #9b59b6;
     border: 0.5rem #80bdff;
   }
 
   .btn .btn-primary {
-    background: #f35588;
-    border: 1px solid #f35588;
+    background: #9b59b6;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: #9b59b6;
+    border: 1px solid #9b59b6;
     color: #fff;
-    background: #f75959;
-    background: -moz-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -webkit-gradient(left top, right bottom, color-stop(0%, #f75959), color-stop(100%, #f35587));
-    background: -webkit-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -o-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -ms-linear-gradient(-45deg, #f75959 0%, #f35587 100%);
-    background: -webkit-linear-gradient(315deg, #f75959 0%, #f35587 100%);
-    background: -o-linear-gradient(315deg, #f75959 0%, #f35587 100%);
-    background: linear-gradient(135deg, #f75959 0%, #f35587 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75959', endColorstr='#f35587', GradientType=1 ); 
   }
     
   .btn.btn-primary:hover {
-    border: 1px solid #f35588;
-    background: #f35588;
+    border: 1px solid #9b59b6;
+    background: #9b59b6;
     color: #fff; 
   }
 
   .btn.btn-primary.btn-outline-primary {
-    border: 1px solid #f35588;
+    border: 1px solid #9b59b6;
     background: transparent;
-    color: #f35588; }
+    color: #9b59b6; }
     
   .btn.btn-primary.btn-outline-primary:hover {
     border: 1px solid transparent;
-    background: #f35588;
+    background: #9b59b6;
     color: #fff; 
   }
 
