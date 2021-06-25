@@ -1,0 +1,19 @@
+<h4 mat-dialog-title> Ingresa Datos del Producto</h4>
+<div mat-dialog-content>
+    <form class="productForm" [formGroup]="productForm" (ngSubmit)="registrarProducto()" > 
+        <div>
+            <mat-form-field>
+                <mat-label> Nombre </mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label> Categoria Id </mat-label>
+                <input matInput formControlName="categoriaid">
+            </mat-form-field>
+        </div>
+        <div>
+            <button type="submit" mat-button color="primary"
+                [disabled]=!productForm.valid> Registrar </button>
+        </div>
+    </form>
+</div>

@@ -1,40 +1,52 @@
-<div *ngIf = "products">
-    <div *ngFor = "let p of products">
-        <span> Nombre:  {{p.nombre}} | </span>
-        <span> Precio: {{p.precio}} | </span>
-        <span> Stock: {{p.stock}} | </span>
+<header>
+    <mat-toolbar color="primary">
+        <span> CRUD PRODUCTOS </span>
+        <span class="spacer"></span>
+        Reload Data:
+        <button mat-icon-button (click)="loadData()">
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </mat-toolbar>
+</header>
+
+<body class="container mat-elevation-z8">
+    <div class="form">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+        </mat-form-field>
     </div>
 
-    <div class="register">
-        <form class="product-form" [formGroup]="productForm" (ngSubmit)="registrarProducto()">
-            <h1>Registra Producto</h1>
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label> ID </mat-label>
-                    <input formControlName="id" matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label> Nombre</mat-label>
-                    <input formControlName="nombre" matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label> Precio</mat-label>
-                    <input formControlName="precio" matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label> Stock </mat-label>
-                    <input formControlName="stock" matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label> Categoria</mat-label>
-                    <input formControlName="categoriaid" matInput>
-                </mat-form-field>
-            </div>
-        </form>
-        <div class="text-right">
-            <button (click)='registrarProducto()' type="submit" mat-button color="primary"
-                [disabled]="!productForm.valid"> Registrar </button>
-        </div>
-    </div>
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.nombre}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="categoriaid">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Categoria Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.categoriaid}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions" class="actions">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                <button mat-icon-button color="primary" (click)="addNew()">
+                    <mat-icon aria-label="Add">add</mat-icon>
+                  </button>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row;">
+                <button mat-icon-button color="accent">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
 
-</div>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let product_row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</body>
