@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Producto } from 'src/app/models/producto.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddComponent } from '../dialogs/add/add.component';
 import { DeleteComponent } from '../dialogs/delete/delete.component';
+import { MatSort } from '@angular/material/sort';
+import { EditComponent } from '../dialogs/edit/edit.component';
 
 @Component({
   selector: 'app-productos',
@@ -21,14 +23,14 @@ export class ProductosComponent implements OnInit {
   public categoria = new Categoria;
   products: Producto[];
   id:number;
+  index: number;
 
   public dataSource: MatTableDataSource<Producto>;
   displayedColumns = ['id', 'nombre', 'categoriaid', 'actions']
 
-  constructor(public httpCliente: HttpClient, private fb: FormBuilder, 
-              public productService: ProductsService, 
-              public dialog: MatDialog) { }
+  constructor(public httpCliente: HttpClient, private fb: FormBuilder, public productService: ProductsService, public dialog: MatDialog) { 
 
+  }
 
   ngOnInit(): void {
     this.loadData();
@@ -76,9 +78,22 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-  deleteItem(id: number, nombre: string, categoriaid: number){
+  deleteItem(i:number, id: number, nombre: string, categoriaid: number){
+    this.index = i;
     this.id = id;
-    const dialogRef = this.dialog.open(DeleteComponent);
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      data: {id:id, nombre:nombre, categoriaid:categoriaid}
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      this.loadData();
+    });
+  }
+
+  onEdit(i:number, id:number, nombre:string, categoriaid:number){
+    this.index = i;
+    const dialogRef = this.dialog.open(EditComponent, {
+      data: {id:id, nombre:nombre, categoriaid:categoriaid}
+    });
     dialogRef.afterClosed().subscribe(result=>{
       this.loadData();
     });

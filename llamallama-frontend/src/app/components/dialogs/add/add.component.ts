@@ -34,6 +34,7 @@ export class AddComponent implements OnInit {
 
   registrarProducto(){
     this.setProducto();
+    console.log(this.product)
     this.productService.createProducto(this.product).subscribe((result:any)=>{
       console.log(result.data)
     });

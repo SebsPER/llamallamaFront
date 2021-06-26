@@ -16,30 +16,30 @@
         </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <mat-table #table [dataSource]="dataSource" class="mat-cell">
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.nombre}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="categoriaid">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Categoria Id</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef >Categoria Id</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.categoriaid}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="actions" class="actions">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>
+            <mat-header-cell *matHeaderCellDef >
                 <button mat-icon-button color="primary" (click)="addNew()">
                     <mat-icon aria-label="Add">add</mat-icon>
                   </button>
             </mat-header-cell>
-            <mat-cell *matCellDef="let row;">
-                <button mat-icon-button color="accent">
+            <mat-cell *matCellDef="let row let i=index;">
+                <button mat-icon-button color="accent" (click)="onEdit(i, row.id, row.nombre, row.categoriaid)">
                     <mat-icon aria-label="Edit">edit</mat-icon>
                 </button>
-                <button mat-icon-button color="accent">
+                <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.nombre, row.categoriaid)">
                     <mat-icon aria-label="Delete">delete</mat-icon>
                 </button>
             </mat-cell>

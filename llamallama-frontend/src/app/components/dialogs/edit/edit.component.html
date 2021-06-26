@@ -1,1 +1,20 @@
-<p>edit works!</p>
+<div class="container">
+    <h3 mat-dialog-title> Product Id: {{data.id}} </h3>
+
+    <form class="mat-dialog-content" [formGroup]="productEditForm" (ngSubmit)="stopEdit()">
+        <div>
+            <mat-form-field>
+                <mat-label> Nombre </mat-label>
+                <input formControlName="nombre"  [(ngModel)]="data.nombre" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label> Categoria Id: </mat-label>
+                <input formControlName="categoriaid"  [(ngModel)]="data.categoriaid" matInput>
+            </mat-form-field>
+        </div>
+        <div style="display: flex;">
+            <button type="submit" mat-button color="primary"> Update </button>
+            <button mat-button color="accent" [mat-dialog-close]="true"> Close </button>
+        </div>
+    </form>
+</div>
