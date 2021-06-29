@@ -1,0 +1,289 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #eee;
+  }
+  
+
+.top-bar{
+    background: rgb(190, 29, 29);
+    height: 35px;
+    margin: 0 auto;
+}
+
+.top-bar span{
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: .5rem;
+    color: rgba(156, 187, 214, 0.788);
+    display: inline-block;
+}
+
+.nav-bar i {
+    color: white;
+    padding: .5rem;
+}
+
+.nav-bar i:hover {
+    cursor: pointer;
+    border-radius: 5px;
+    background: #ada6ad;
+}
+
+.nav-bar {
+    background-color: gray;
+    padding: .5rem;
+}
+
+.search-input{
+    width: 15%;
+    border-radius: .5rem;
+    padding: 6px;
+    border: .5px solid #ada6ad;
+    min-width: 15%;
+    max-width: 50%;
+}
+
+.dropBtn{
+    border-radius: .5rem;
+    padding: .5rem;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown{
+    float: right;
+}
+
+.drop-down-content{
+    border-radius: 0.5rem;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.drop-down-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.drop-down-content a:hover{
+    border-radius: .5rem;
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .drop-down-content{
+    display: block;
+} 
+
+.dropdown:hover .dropBtn{
+    background-color: #3e8e41;
+}
+
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    background: #dcdcdc;
+}
+
+
+.container{
+    position: relative;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.container .productCard{
+    width: 100%;
+    background: #fff;
+}
+
+.container .productCard .imgBox{
+    position: relative;
+    width: 100%;
+    height: 310px;
+    overflow: hidden;
+}
+
+.container .productCard .imgBox img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease-in-out;
+    transform-origin: right;
+}
+
+.container .productCard:hover .imgBox img{
+    transform: scale(1.5);
+}
+
+.action{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.action li{
+    position: relative;
+    list-style: none;
+    width: 40px;
+    height: 40px;
+    background: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition:  transform 0.5s;
+    transform: translateX(60px);
+}
+
+.action li:nth-child(2){
+    transition-delay: 0.15s;
+
+}
+
+.container .productCard:hover .action li{
+    transform: translateX(0px);
+}
+
+.action li:hover{
+    background: #c46fbf;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.action li span{
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-20px);
+    white-space: nowrap;
+    padding: 4px 60px;
+    background: #fff;
+    color: #333;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.action li:hover span{
+    transform: translateY(-50%) translateX(0px);
+    opacity: 1;
+}
+
+.action li span::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -4px;
+    width: 8px;
+    height: 8px;
+    background: #c46fbf;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.container .productCard .content{
+    padding: 10px;
+}
+
+.container .productCard .content .productName h3{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin: 5px 0 ;
+}
+
+.container .productCard .content .price_rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: #cf2c2c;
+    font-weight: 500;
+}
+
+
+.container .productCard .content .price_rating .fa{
+    color: #dbb300;
+    cursor: pointer;
+}
+
+
+
+
+.nav-bar input{
+    position: relative;
+    border-radius: .5rem solid black;
+    background: whitesmoke;
+    display: flex;
+}
+
+.nav{
+    position: relative;
+    border: none;
+    display:flex;
+    list-style-type: none;
+    background: rgb(214, 209, 209);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .nav li{
+    margin: 0;
+  }
+  
+  .nav :hover{
+    color: rgb(200,200,200);
+    border-radius: 0.5rem;
+    background-color: #6455a5;
+  }
+  
+  .nav li a{
+    position: relative;
+    padding: 10px 36px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    
+    z-index: 3;
+  }
+  
+  .nav li a.is-active{
+    color: #000;
+    background: #806bc5;
+  }
+  
+  .nav .slide{
+    position: absolute;
+    display: inline-flex;
+    height: 5px;
+    bottom: 5px;
+    transition: 0.5s cubic-bezier(0.23,1, 0.32, 1.05);
+    z-index: 2;
+    background-color: #623be4;    
+  }
