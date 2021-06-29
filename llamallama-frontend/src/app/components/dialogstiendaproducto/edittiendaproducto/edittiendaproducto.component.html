@@ -1,0 +1,29 @@
+<div class="row">
+    <h3 mat-dialog-title formControlName="productoid" > Product Id: {{data.productoid}} </h3>
+    <h3 mat-dialog-title formControlName="tiendaid"> Tienda Id: {{data.tiendaid}} </h3>
+    <div class="container">
+        <div class="register">
+            <form class="product-form" [formGroup]="tpEditForm" (ngSubmit)="stopEdit()">
+                <h1>Registra Producto</h1>
+                <div class="justify-content-center">
+                    <mat-form-field>
+                        <mat-label> Precio</mat-label>
+                        <input formControlName="precio" [(ngModel)]="data.precio" matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label> Stock </mat-label>
+                        <input  formControlName="stock" [(ngModel)]="data.stock" matInput>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label> Descuento</mat-label>
+                        <input formControlName="descuento" [(ngModel)]="data.descuento" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="text-right">
+                    <button type="submit" mat-button color="primary"> Update </button>
+            <button mat-button color="accent" [mat-dialog-close]="true"> Close </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

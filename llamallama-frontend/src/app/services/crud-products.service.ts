@@ -6,12 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CrudProductsService {
 
   //private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
   private API = 'http://localhost:8080/llamallama/v1/'
-
-
   constructor(private http: HttpClient) {
 
   }
@@ -24,9 +23,11 @@ export class CrudProductsService {
     return this.http.post(this.API + 'tienda_producto', product);
   }
 
-  update(product: any): Observable<any>{
-    //modificar
-    return this.http.put(this.API + 'products', 'tpUpdate/{tiendaid}/{productoid}/{stock}/{precio}/{descuento}');
+  update(tp: Tienda_producto){
+    return this.http.put<Tienda_producto>(this.API + 'tpUpdate' + '/' + tp.tiendaid + '/'+ tp.productoid +'/' + tp.stock + '/' + tp.precio +'/'+ tp.descuento, tp);
   }
   
+  delete(tiendaid: number, productoid: number){
+    return this.http.delete(this.API + 'tiendaProducto' + '/' + tiendaid + '/' + productoid);
+  }
 }

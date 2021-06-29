@@ -1,49 +1,59 @@
-<div class="register">
-    <form class="product-form" [formGroup]="tiendaProductForm" (ngSubmit)="registrarTiendaProducto()">
-        <h1>Registra Producto</h1>
-        <div>
-            <mat-form-field appearance="fill">
-                <mat-label> ID Producto </mat-label>
-                <mat-select formControlName="productoid">
-                    <mat-option *ngFor="let product of productos" [value]="product.id">
-                        {{product.nombre}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            
-            <mat-form-field>
-                <mat-label> ID Tienda </mat-label>
-                <input formControlName="tiendaid" matInput>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label> Precio</mat-label>
-                <input formControlName="precio" matInput>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label> Stock </mat-label>
-                <input formControlName="stock" matInput>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label> Descuento</mat-label>
-                <input formControlName="descuento" matInput>
-            </mat-form-field>
-        </div>
-    </form>
-    <div class="text-right">
-        <button (click)='registrarTiendaProducto()' type="submit" mat-button color="primary"
-            [disabled]="!tiendaProductForm.valid"> Registrar </button>
+
+<header>
+    <mat-toolbar color="primary">
+        <span> Gestiona Productos Tienda </span>
+        <span class="spacer"></span>
+    </mat-toolbar>
+</header>
+<body class="container">
+    <div class="form">
+        <mat-form-field >
+            <input matInput (keyup)="applyFilter($event)" placeholder="Filter Products">
+        </mat-form-field>
     </div>
     
-</div>
+    <table mat-table [dataSource]="dataSource" class = "mat-elevation-z8">
+        <ng-container matColumnDef="productoid">
+            <th mat-header-cell *matHeaderCellDef> ID. </th>
+            <td mat-cell *matCellDef="let tp"> {{ tp.productoid}} </td>
+        </ng-container>
+        <ng-container matColumnDef="prodN">
+            <th mat-header-cell *matHeaderCellDef> Nombre. </th>
+            <td mat-cell *matCellDef="let tp">{{tp.prodN}} </td>
+        </ng-container>
+        <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef> Precio. </th>
+            <td mat-cell *matCellDef="let tp"> S/ {{tp.precio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="stock">
+            <th mat-header-cell *matHeaderCellDef> Stock. </th>
+            <td mat-cell *matCellDef="let tp">{{tp.stock}} </td>
+        </ng-container>
+        <ng-container matColumnDef="descuento">
+            <th mat-header-cell *matHeaderCellDef> Descuento. </th>
+            <td mat-cell *matCellDef="let tp">{{tp.descuento}} </td>
+        </ng-container>
+        <ng-container matColumnDef="catN">
+            <th mat-header-cell *matHeaderCellDef> Categoria. </th>
+            <td mat-cell *matCellDef="let tp">{{tp.catN}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef >
+                <button mat-icon-button color="primary" (click)="addNew()">
+                    <mat-icon aria-label="Add">add</mat-icon>
+                  </button>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let tp">
+                <button mat-icon-button color="accent" (click)="editItem(tp.productoid, tp.prodN, tp.precio, tp.stock, tp.descuento, tp.catN, tp.tiendaid)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" (click)="deleteItem(tp.productoid, tp.prodN, tp.precio, tp.stock, tp.descuento, tp.catN, tp.tiendaid)">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
 
-
-<div class="listado-productos" *ngIf="tienda_productos">
-    <div *ngFor="let ps of tienda_productos">
-        <span> Producto: </span>{{ps.productoid}} <br>
-        <span> Tienda: </span> {{ps.tiendaid}} <br>
-        <span> Descuento: </span> {{ps.descuento}} <br>
-        <span> Precio: </span> {{ps.precio}} <br>
-        <span> Stock: </span> {{ps.stock}} <br>
-        <br>
-    </div>
-</div>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let tp; columns: displayedColumns"> </mat-row>       
+    </table>
+</body>

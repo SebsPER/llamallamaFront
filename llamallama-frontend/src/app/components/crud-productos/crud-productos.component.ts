@@ -1,9 +1,14 @@
+import { prepareSyntheticPropertyName } from '@angular/compiler/src/render3/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Producto } from 'src/app/models/producto.model';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Tienda_producto } from 'src/app/models/tienda_producto.model';
 import { CrudProductsService } from 'src/app/services/crud-products.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { AddtiendaproductoComponent } from '../dialogstiendaproducto/addtiendaproducto/addtiendaproducto.component';
+import { DeletetiendaproductoComponent } from '../dialogstiendaproducto/deletetiendaproducto/deletetiendaproducto.component';
+import { EdittiendaproductoComponent } from '../dialogstiendaproducto/edittiendaproducto/edittiendaproducto.component';
 
 @Component({
   selector: 'app-crud-productos',
@@ -13,41 +18,23 @@ import { ProductsService } from 'src/app/services/products.service';
 export class CrudProductosComponent implements OnInit {
 
   public tiendaProductForm: FormGroup;
-  public tiendaProductito = new Tienda_producto();
 
-  public product = new Producto();
-  private idproducto: number;
-
-  tienda_productos: Tienda_producto[];
-  productos: Producto[];
-
-  constructor(private fb: FormBuilder, 
-    public tiendaProductoService: CrudProductsService, 
-    public productService: ProductsService) { }
+  //Data Source y Columnas para la tabla
+  public dataSource: MatTableDataSource<Tienda_producto[]>;
+  displayedColumns = ['productoid', 'prodN', 'precio', 'stock', 'descuento', 'catN', 'actions']
+  
+  constructor(private fb: FormBuilder, public tiendaProductoService: CrudProductsService, 
+    public productService: ProductsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.loadData();
     this.initForm();
-    this.showTiendaProducts();
-    this.getAllProducts();
   }
 
-  getAllProducts(){
-    this.productService.getProducts().subscribe((result:any)=>{
-      this.productos = result.data;
-    })
-  }
-
-  getProduct(){
-    this.productService.getProductbyId(this.idproducto).subscribe((result:any)=>{
-      this.product = result.data;
-    })
-  }
-
-  showTiendaProducts(){
+  loadData(){
     this.tiendaProductoService.getAll().subscribe((result:any)=>{
-      console.log(result.data)
-      this.tienda_productos = result.data;
-    })
+      this.dataSource=result.data;
+    });
   }
 
   initForm(){
@@ -57,24 +44,44 @@ export class CrudProductosComponent implements OnInit {
       precio:['', Validators.required],
       stock:['', Validators.required],
       descuento:['', Validators.required]
-    })
-  }
-
-  setTiendaProducto(){
-    this.tiendaProductito.productoid=this.tiendaProductForm.get('productoid')?.value //select
-    this.tiendaProductito.tiendaid=this.tiendaProductForm.get('tiendaid')?.value //select
-    this.tiendaProductito.precio=this.tiendaProductForm.get('precio')?.value
-    this.tiendaProductito.stock=this.tiendaProductForm.get('stock')?.value
-    this.tiendaProductito.descuento=this.tiendaProductForm.get('descuento')?.value
-  }
-
-  registrarTiendaProducto() {
-    this.setTiendaProducto();
-    console.log(this.tiendaProductito)
-    this.tiendaProductoService.createTienda_Producto(this.tiendaProductito).subscribe((result:any)=>{
-      console.log(result.data)
     });
-    this.showTiendaProducts();
   }
 
+  toparseFloat(n: string){
+    return parseFloat(n);
+  }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(filterValue);
+  }
+
+  addNew(){
+    const dialogRef = this.dialog.open(AddtiendaproductoComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.loadData();
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      this.loadData();
+    });
+  }
+
+  deleteItem(productoid: number, prodN:string, precio:number, stock:number, descuento:number, catN:string, tiendaid:number){
+    const dialogRef = this.dialog.open(DeletetiendaproductoComponent, {
+      data: {productoid:productoid, prodN: prodN, precio:precio, stock:stock, descuento:descuento, catN:catN, tiendaid:tiendaid}
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      this.loadData();
+    });
+  }
+
+  editItem(productoid: number, prodN:string, precio:number, stock:number, descuento:number, catN:string, tiendaid:number){
+    const dialogRef = this.dialog.open(EdittiendaproductoComponent, {
+      data: {productoid:productoid, prodN: prodN, precio:precio, stock:stock, descuento:descuento, catN:catN, tiendaid:tiendaid}
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      this.loadData();
+    });
+  }
 }

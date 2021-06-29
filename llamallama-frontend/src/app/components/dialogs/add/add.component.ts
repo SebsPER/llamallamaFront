@@ -24,7 +24,7 @@ export class AddComponent implements OnInit {
     this.productForm = this.fb.group({
       nombre:['', Validators.required],
       categoriaid:['', Validators .required]
-    })
+    });
   }
 
   setProducto(){

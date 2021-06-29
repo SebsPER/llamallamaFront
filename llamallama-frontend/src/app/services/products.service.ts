@@ -22,11 +22,16 @@ export class ProductsService {
     return this.http.post(this.API + 'products', product);
   }
 
-  editProduct(product: any): Observable<any>{
-    return this.http.put(this.API + 'products', product);
+  editProduct(p: Producto){
+    return this.http.put(this.API + 'products' + '/' + p.id + '/' + p.nombre + '/' + p.categoriaid, p);
   }
 
   getProductbyId(id: number){
     return this.http.get(this.API + 'productn' + '/' + id)
   }
+
+  deleteById(id:number){
+    return this.http.delete(this.API + 'productdi' + '/' + id)
+  }
+
 }

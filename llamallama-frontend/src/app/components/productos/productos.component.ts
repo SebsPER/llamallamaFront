@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Producto } from 'src/app/models/producto.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddComponent } from '../dialogs/add/add.component';
 import { DeleteComponent } from '../dialogs/delete/delete.component';
-import { MatSort } from '@angular/material/sort';
 import { EditComponent } from '../dialogs/edit/edit.component';
 
 @Component({
@@ -35,7 +34,6 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     this.loadData();
     this.initForm();
-    this.dataSource = new MatTableDataSource(this.products);
   }
 
   loadData(){
@@ -47,7 +45,6 @@ export class ProductosComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log('it filter works');
     this.loadData();
   }
 
@@ -56,19 +53,6 @@ export class ProductosComponent implements OnInit {
       categoriaid: ['', Validators.required],
       nombre: ['', Validators.required]
     })
-  }
-
-  setProducto(){
-    this.productito.categoriaid=this.productForm.get('categoriaid')?.value;
-    this.productito.nombre=this.productForm.get('nombre')?.value;
-  }
-
-  registrarProducto(){
-    this.setProducto();
-    console.log(this.productito)
-    this.productService.createProducto(this.productito).subscribe((result:any)=>{
-      console.log(result.data)
-    });
   }
 
   addNew(){
@@ -90,7 +74,6 @@ export class ProductosComponent implements OnInit {
   }
 
   onEdit(i:number, id:number, nombre:string, categoriaid:number){
-    this.index = i;
     const dialogRef = this.dialog.open(EditComponent, {
       data: {id:id, nombre:nombre, categoriaid:categoriaid}
     });

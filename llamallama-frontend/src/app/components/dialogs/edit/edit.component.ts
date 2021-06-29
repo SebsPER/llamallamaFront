@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
   }
 
   setProducto(){
+    this.producto.id=this.data.id;
     this.producto.nombre=this.productEditForm.get('nombre')?.value;
     this.producto.categoriaid=this.productEditForm.get('categoriaid')?.value;
   }
