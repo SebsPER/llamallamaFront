@@ -36,7 +36,7 @@ export class EdittiendaproductoComponent implements OnInit {
   settpProduct(){
     this.tpProduct.stock=this.tpEditForm.get('stock')?.value;
     this.tpProduct.precio= parseFloat(this.tpEditForm.get('precio')?.value);
-    this.tpProduct.tiendaid=this.data.idt;
+    this.tpProduct.tiendaid=this.data.tiendaid;
     this.tpProduct.productoid=this.data.productoid;
     this.tpProduct.descuento=parseFloat(this.tpEditForm.get('descuento')?.value)
   }
