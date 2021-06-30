@@ -60,9 +60,9 @@ export class CompracComponent implements OnInit {
     });
   }
   setProCro(){
-    this.compraprod.compraid= this.compraform.get('compraid')?.value;
-    this.compraprod.productoid=this.idproducto;
-    this.compraprod.cant_productos=this.compraform.get('cant_productos')?.value;
+    this.compraprod.compraId= this.compraform.get('compraid')?.value;
+    this.compraprod.productoId=this.idproducto;
+    this.compraprod.cantproductos=this.compraform.get('cant_productos')?.value;
     this.compraprod.tiendaid=this.compraform.get('tiendaid')?.value;
   }
 

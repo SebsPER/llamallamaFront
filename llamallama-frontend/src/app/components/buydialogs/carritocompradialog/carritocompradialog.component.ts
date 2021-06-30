@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Compra } from 'src/app/models/compra.model';
+import { Compra_producto } from 'src/app/models/compra_producto.model';
 import { CompraService } from 'src/app/services/compra.service';
 
 @Component({
@@ -14,8 +15,10 @@ export class CarritocompradialogComponent implements OnInit {
   public firstFormGroup: FormGroup;
   public secondFormGroup: FormGroup;
   public thirdFormGroup: FormGroup;
+  public compraid: number = 0;
 
   public compra = new Compra();
+  public cp = new Compra_producto();
 
   public shop_cart: any[];
   public total: number = 0;
@@ -68,6 +71,24 @@ export class CarritocompradialogComponent implements OnInit {
     this.setCompra();
     this.compraService.createCompra(this.compra).subscribe((result:any)=>{
       console.log(result.data);
-    })
+      this.compraid = result.data.id;
+      this.cp.compraId = result.data.id;
+      console.log(this.compraid);
+      this.details();
+    });
+  }
+
+  details() {
+    for (let i = 0; i < this.shop_cart.length; i++) { 
+      this.cp.cantproductos = this.shop_cart[i].cantidad;
+      this.cp.productoId = this.shop_cart[i].productoid;
+      this.cp.tiendaid = this.shop_cart[i].tiendaid;
+      //this.cp.compraId = this.compraid;
+      console.log(this.cp);
+      this.compraService.createCompraProd(this.cp).subscribe((result:any)=>{
+        console.log(result.data);
+      });
+    }
+    localStorage.removeItem('carrito');
   }
 }
