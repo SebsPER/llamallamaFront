@@ -35,42 +35,15 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterComponent,
-    HeaderclienteComponent,
-    HeaderComponent,
-    NavegaciontiendaComponent,
-    CompracComponent,
-    CompraorderComponent,
-    CrudProductosComponent,
-    ProductosComponent
+    AppComponent
   ],
   imports: [
+
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    HttpClientModule,
-    MatIconModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatInputModule ,
-    MatRadioModule,
-    MatOptionModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MatGridListModule,
-    CommonModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatNativeDateModule,
-    AppRoutingModule,
-    MatRadioModule,
-    MatGridListModule
+    ComponentModule,
+    HttpClientModule
     
   
 

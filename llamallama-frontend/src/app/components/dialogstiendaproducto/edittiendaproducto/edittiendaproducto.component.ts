@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Tienda_producto } from 'src/app/models/tienda_producto.model';
 import { CrudProductsService } from 'src/app/services/crud-products.service';
-import { DeletetiendaproductoComponent } from '../deletetiendaproducto/deletetiendaproducto.component';
 
 @Component({
   selector: 'app-edittiendaproducto',
@@ -37,7 +36,7 @@ export class EdittiendaproductoComponent implements OnInit {
   settpProduct(){
     this.tpProduct.stock=this.tpEditForm.get('stock')?.value;
     this.tpProduct.precio= parseFloat(this.tpEditForm.get('precio')?.value);
-    this.tpProduct.tiendaid=this.data.tiendaid;
+    this.tpProduct.tiendaid=this.data.idt;
     this.tpProduct.productoid=this.data.productoid;
     this.tpProduct.descuento=parseFloat(this.tpEditForm.get('descuento')?.value)
   }

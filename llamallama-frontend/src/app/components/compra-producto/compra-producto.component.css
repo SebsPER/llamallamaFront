@@ -6,6 +6,11 @@
     right: 0;
     background: #eee;
   }
+
+  input[type=number]
+{
+  -moz-appearance: textfield;
+}
   
 
 .top-bar{
@@ -36,6 +41,14 @@
 .nav-bar {
     background-color: gray;
     padding: .5rem;
+}
+
+.cant-prod{
+    width: 15%;
+    border-radius: .5rem;
+    border: .5px solid #ada6ad;
+    min-width: 15%;
+    max-width: 50%;
 }
 
 .search-input{
@@ -233,7 +246,7 @@ body{
     cursor: pointer;
 }
 
-
+/* Barra de navegacion (temporal)
 
 
 .nav-bar input{
@@ -287,3 +300,4 @@ body{
     z-index: 2;
     background-color: #623be4;    
   }
+  */

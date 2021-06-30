@@ -1,0 +1,7 @@
+<app-headercliente></app-headercliente>
+<div class= container *ngIf=cliente>
+<h1>Bienvenido {{cliente.nombre}} {{cliente.apellido_paterno}}</h1>
+<span class="example-spacer"  ></span>
+<h2>DNI: {{cliente.dni}}</h2>
+<mat-label>Direccion principal: {{cliente.direccion}}</mat-label>
+</div>

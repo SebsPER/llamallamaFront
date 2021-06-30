@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente.model';
+import { Tienda } from 'src/app/models/tienda.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-loginv',
+  templateUrl: './loginv.component.html',
+  styleUrls: ['./loginv.component.css']
 })
-
-export class LoginComponent implements OnInit {
+export class LoginvComponent implements OnInit {
 
   public loginUserForm: FormGroup;
+  public logvenForm: FormGroup;
   public cliente = new Cliente();
+  public tienda = new Tienda();
   public status: String;
-  
   
   constructor(private fb: FormBuilder,
     private loginservice:LoginService,
@@ -49,6 +50,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  getAuthV(){
+    var user: number = this.loginUserForm.get('usuario')?.value;
+    var pass: string = this.loginUserForm.get('password')?.value; 
+    this.loginservice.getAuthTienda(user,pass).subscribe((result:any)=>{
+      console.log(result.data);
+      this.tienda=result.data;
+      console.log(result.status);
+      this.status=result.status;
+    });
+  }
 
   getClientebyId(){
 

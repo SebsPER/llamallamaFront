@@ -1,0 +1,55 @@
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>CARRITO COMPRAS </ng-template>
+          <mat-list *ngFor="let sc of shop_cart">
+              <mat-list-item>
+                Producto: {{sc.productoid}} Precio: {{sc.precio}} Cantidad: {{sc.cantidad}}
+              </mat-list-item>
+          </mat-list>
+          <mat-form-field appearance="fill">
+            <mat-label>Monto Total</mat-label>
+            <input matInput [(ngModel)]="total" formControlName="monto_total" [contentEditable]="false">
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel> DATOS DE ENVIO</ng-template>
+        <mat-form-field>
+            <mat-label> Direccion</mat-label>
+            <input matInput formControlName="direccion">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Ciudad</mat-label>
+            <input matInput formControlName="ciudad_envio">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label> Distrito</mat-label>
+            <input matInput formControlName="distrito_envio">
+        </mat-form-field>
+        </form> 
+        <div>
+        <button mat-button matStepperPrevious>anterior</button>
+        <button mat-button matStepperNext>Siguiente</button>
+    </div>       
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel> CONFIRMACION MEDIO PAGO </ng-template>
+            <mat-form-field>
+                <mat-select formControlName="tipopago_id" >
+                    <mat-option [value] = 1 > Efectivo</mat-option>
+                    <mat-option [value] = 2 > Tarjeta</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="comprar()">Confirmar Compra</button>
+        </div>
+    </mat-step>
+</mat-stepper>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tienda_producto } from '../models/tienda_producto.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Tienda } from '../models/tienda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class CrudProductsService {
   
   delete(tiendaid: number, productoid: number){
     return this.http.delete(this.API + 'tiendaProducto' + '/' + tiendaid + '/' + productoid);
+  }
+
+  getTPbyTid(id:number): Observable<Tienda_producto>{
+    return this.http.get<Tienda_producto>(this.API+'tienda_producto'+'/'+id);
   }
 }

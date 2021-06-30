@@ -1,8 +1,9 @@
 import { prepareSyntheticPropertyName } from '@angular/compiler/src/render3/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Tienda_producto } from 'src/app/models/tienda_producto.model';
 import { CrudProductsService } from 'src/app/services/crud-products.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -18,21 +19,23 @@ import { EdittiendaproductoComponent } from '../dialogstiendaproducto/edittienda
 export class CrudProductosComponent implements OnInit {
 
   public tiendaProductForm: FormGroup;
-
+  public idcliente: number;
   //Data Source y Columnas para la tabla
   public dataSource: MatTableDataSource<Tienda_producto[]>;
   displayedColumns = ['productoid', 'prodN', 'precio', 'stock', 'descuento', 'catN', 'actions']
   
   constructor(private fb: FormBuilder, public tiendaProductoService: CrudProductsService, 
-    public productService: ProductsService, private dialog: MatDialog) { }
+    public productService: ProductsService, private dialog: MatDialog,
+    public router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.idcliente= Number(this.router.snapshot.paramMap.get('id'))
     this.loadData();
     this.initForm();
   }
 
   loadData(){
-    this.tiendaProductoService.getAll().subscribe((result:any)=>{
+    this.tiendaProductoService.getTPbyTid(this.idcliente).subscribe((result:any)=>{
       this.dataSource=result.data;
     });
   }
@@ -40,7 +43,6 @@ export class CrudProductosComponent implements OnInit {
   initForm(){
     this.tiendaProductForm = this.fb.group({
       productoid:['', Validators.required],
-      tiendaid:['', Validators.required],
       precio:['', Validators.required],
       stock:['', Validators.required],
       descuento:['', Validators.required]
@@ -58,7 +60,9 @@ export class CrudProductosComponent implements OnInit {
   }
 
   addNew(){
-    const dialogRef = this.dialog.open(AddtiendaproductoComponent);
+    const dialogRef = this.dialog.open(AddtiendaproductoComponent,{
+      data: {idt: this.idcliente}
+    });
     dialogRef.afterClosed().subscribe(result => {
       this.loadData();
     });
