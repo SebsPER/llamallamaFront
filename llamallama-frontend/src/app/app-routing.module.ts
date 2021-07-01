@@ -5,6 +5,7 @@ import { ClienteComponent } from './components/cliente/cliente.component';
 import { CompraProductoComponent } from './components/compra-producto/compra-producto.component';
 import { CompracComponent } from './components/comprac/comprac.component';
 import { CompraorderComponent } from './components/compraorder/compraorder.component';
+import { ComprasComponent } from './components/compras/compras.component';
 import { CrudProductosComponent } from './components/crud-productos/crud-productos.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginvComponent } from './components/loginv/loginv.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: 'tienda/:id/crud-productos', component: CrudProductosComponent},
   {path: 'cliente/:id', component: ClienteComponent},
   {path: 'productos', component: ProductosComponent},
-  {path: 'compras',component:CompraorderComponent},
+  {path: 'cliente/:id/compras', component:ComprasComponent},
   {path: 'tiendas/:id', component: BusquedaComponent},
   {path: 'logintienda',component:LoginvComponent},
   {path: 'tienda/:id',component:TiendaComponent},

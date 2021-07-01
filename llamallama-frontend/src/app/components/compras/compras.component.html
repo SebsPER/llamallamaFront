@@ -1,0 +1,55 @@
+<app-headercliente></app-headercliente>
+
+<div>
+
+    <div class="sidebar">
+    <h2>DATOS DEL CLIENTE </h2>
+    <div class="client-form">
+        <mat-label>Nombre Cliente </mat-label>
+        <input [disabled]="true" [(ngModel)] ="cliente.nombre">
+        <mat-divider></mat-divider>
+        <mat-label>Apellido Paterno </mat-label>
+        <input [disabled]="true" [(ngModel)] ="cliente.apellido_paterno">
+        <mat-divider></mat-divider>
+        <mat-label>Apellido Materno </mat-label>
+        <input [disabled]="true" [(ngModel)] ="cliente.apellido_materno">
+        <mat-divider></mat-divider>
+        <mat-label>Direccion </mat-label> <br>
+        <input [disabled]="true" [(ngModel)] ="cliente.direccion">
+        <mat-divider></mat-divider>
+        <mat-label>Telefono </mat-label> <br>
+        <input [disabled]="true" [(ngModel)] ="cliente.telefono">
+    </div>
+</div>
+<div class="content">
+    <h4>DATOS DE COMPRAS </h4>
+    <table mat-table [dataSource]="compras" class="mat-elevation-z8">
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.fecha}} </td>
+        </ng-container>
+        <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef> Direccion </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.direccion}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ciudad">
+            <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.ciudad_envio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="distrito">
+            <th mat-header-cell *matHeaderCellDef> Distrito </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.distrito_envio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="monto">
+            <th mat-header-cell *matHeaderCellDef> Monto </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.monto_total}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tipopagoid">
+            <th mat-header-cell *matHeaderCellDef> Tipo Pago </th>
+            <td mat-cell *matCellDef="let compra"> {{compra.tipopagoid}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

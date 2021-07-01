@@ -19,4 +19,8 @@ export class CompraService {
   createCompraProd(cp: Compra_producto){
     return this.http.post(this.API + 'compra_producto', cp);
   }
+
+  getComprabyClienteId(id: number){
+    return this.http.get(this.API + 'compracli' + '/' + id)
+  }
 }

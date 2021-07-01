@@ -25,6 +25,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { CompraProductoComponent } from './compra-producto/compra-producto.component';
 import { CarritocompradialogComponent } from './buydialogs/carritocompradialog/carritocompradialog.component';
 import { RegistertiendaComponent } from './registertienda/registertienda.component';
+import { ComprasComponent } from './compras/compras.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { RegistertiendaComponent } from './registertienda/registertienda.compone
     ClienteComponent,
     CompraProductoComponent,
     CarritocompradialogComponent,
-    RegistertiendaComponent
+    RegistertiendaComponent,
+    ComprasComponent
   ],
   imports:[
     CommonModule,
