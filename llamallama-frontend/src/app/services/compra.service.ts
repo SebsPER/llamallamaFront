@@ -10,7 +10,7 @@ export class CompraService {
 
   constructor(private http: HttpClient) { }
 
-  private API = 'http://localhost:8080/llamallama/v1/'
+  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
 
   createCompra(compra: Compra){
     return this.http.post(this.API + 'compras', compra);

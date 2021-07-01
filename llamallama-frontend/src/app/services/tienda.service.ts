@@ -8,7 +8,7 @@ import { Tienda } from '../models/tienda.model';
 })
 export class TiendaService {
 
-  private API = 'http://localhost:8080/llamallama/v1/'
+  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
 
   constructor(private http: HttpClient) { }
 

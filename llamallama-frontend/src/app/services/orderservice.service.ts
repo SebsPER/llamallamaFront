@@ -8,8 +8,7 @@ import { Tipo_pago } from '../models/tipo_pago.model';
   providedIn: 'root'
 })
 export class OrderserviceService {
-  //private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
-  private API = 'http://localhost:8080/llamallama/v1/'
+  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
 
 
 

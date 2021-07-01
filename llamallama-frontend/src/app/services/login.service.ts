@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  private API = 'http://localhost:8080/llamallama/v1/'
+  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
 
 
   constructor(private http:HttpClient) { }

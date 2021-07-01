@@ -7,7 +7,7 @@ import { Tienda } from '../models/tienda.model';
   providedIn: 'root'
 })
 export class RegisterService {
-  private API = 'http://localhost:8080/llamallama/v1/'
+  private API = 'https://app-llamallama.herokuapp.com/llamallama/v1/';
 
 
 
