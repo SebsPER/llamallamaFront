@@ -11,6 +11,7 @@ import { LoginvComponent } from './components/loginv/loginv.component';
 import { NavegaciontiendaComponent } from './components/navegaciontienda/navegaciontienda.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RegistertiendaComponent } from './components/registertienda/registertienda.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'compras',component:CompraorderComponent},
   {path: 'tiendas/:id', component: BusquedaComponent},
   {path: 'logintienda',component:LoginvComponent},
-  {path: 'tienda/:id',component:TiendaComponent}
+  {path: 'tienda/:id',component:TiendaComponent},
+  {path: 'registertienda', component:RegistertiendaComponent}
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { LoginvComponent } from './loginv/loginv.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { CompraProductoComponent } from './compra-producto/compra-producto.component';
 import { CarritocompradialogComponent } from './buydialogs/carritocompradialog/carritocompradialog.component';
+import { RegistertiendaComponent } from './registertienda/registertienda.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { CarritocompradialogComponent } from './buydialogs/carritocompradialog/c
     LoginvComponent,
     ClienteComponent,
     CompraProductoComponent,
-    CarritocompradialogComponent
+    CarritocompradialogComponent,
+    RegistertiendaComponent
   ],
   imports:[
     CommonModule,

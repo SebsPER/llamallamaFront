@@ -1,1 +1,40 @@
-<p>registertienda works!</p>
+<body>
+    <div class="container">
+        <div class="title">
+            <h4> Registro de Vendedor y Tienda </h4>
+        </div>
+        <form action="#" [formGroup]="registroUsuarioForm" (ngSubmit)="createcliente">
+            <div class="user-details">
+                <div class="input-box">
+                    <mat-label class="details"> Nombre de tienda</mat-label>
+                    <input formControlName="nombre" placeholder="Ingresa el nombre de la tienda" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Nombre de encargado </mat-label>
+                    <input formControlName="nombre_encargado" placeholder="Ingrese apellido paterno" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> RUC </mat-label>
+                    <input formControlName="ruc" placeholder="Ingresa tu  RUC" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Contraseña </mat-label>
+                    <input formControlName="password" placeholder="Ingresa tu contraseña" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Razon Social </mat-label>
+                    <input formControlName="razon_social" placeholder="Ingresa tu razon social" required matInput>
+                </div>
+                <div class="input-box">
+                    <mat-label class="details"> Direccion </mat-label>
+                    <input formControlName="direccion" placeholder="Ingreas tu Direccion" required matInput>
+                </div>
+            </div>
+            <div class="button">
+                <button class="submit" mat-raised-button (click)='createcliente()' [disabled]=!registroUsuarioForm.valid routerLink='/logintienda'>
+                    Registrar
+                </button>
+            </div>
+        </form>
+    </div>    
+</body>

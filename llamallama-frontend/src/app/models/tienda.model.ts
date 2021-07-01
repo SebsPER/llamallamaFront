@@ -6,5 +6,4 @@ export class Tienda{
     direccion: string;
     nombre_encargado: string;
     password: string;
-    products: any[];
 }

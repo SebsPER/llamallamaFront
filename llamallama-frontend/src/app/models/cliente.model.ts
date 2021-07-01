@@ -5,6 +5,6 @@ export class Cliente{
     direccion: string;
     telefono: number;
     apellido_paterno: string;
-    apellido_matenro: string;
+    apellido_materno: string;
     password: string;
 }
